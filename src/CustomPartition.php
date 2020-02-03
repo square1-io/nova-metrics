@@ -2,9 +2,9 @@
 
 namespace Square1\NovaMetrics;
 
-use Laravel\Nova\Metrics\Value;
+use Laravel\Nova\Metrics\Partition;
 
-class CustomValue extends Value
+class CustomPartition extends Partition
 {
     /**
      * Get the component name for the element.
@@ -13,6 +13,6 @@ class CustomValue extends Value
      */
     public function component()
     {
-        return 'CustomValueMetric';
+        return 'CustomPartitionMetric';
     }
 }
