@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\CustomTrend;
+namespace Square1\NovaMetrics;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +23,12 @@ class CardServiceProvider extends ServiceProvider
         Nova::serving(function (ServingNova $event) {
             Nova::script('CustomTrend', __DIR__.'/../dist/js/card.js');
             Nova::style('CustomTrend', __DIR__.'/../dist/css/card.css');
+
+            Nova::script('CustomValue', __DIR__.'/../dist/js/card.js');
+            Nova::style('CustomValue', __DIR__.'/../dist/css/card.css');
+
+            Nova::script('CustomPartition', __DIR__.'/../dist/js/card.js');
+            Nova::style('CustomPartition', __DIR__.'/../dist/css/card.css');
         });
     }
 
@@ -39,6 +45,14 @@ class CardServiceProvider extends ServiceProvider
 
         Route::middleware(['nova'])
                 ->prefix('nova-vendor/CustomTrend')
+                ->group(__DIR__.'/../routes/api.php');
+
+        Route::middleware(['nova'])
+                ->prefix('nova-vendor/CustomValue')
+                ->group(__DIR__.'/../routes/api.php');
+
+        Route::middleware(['nova'])
+                ->prefix('nova-vendor/CustomPartition')
                 ->group(__DIR__.'/../routes/api.php');
     }
 

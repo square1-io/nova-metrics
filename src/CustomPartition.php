@@ -2,9 +2,9 @@
 
 namespace Square1\NovaMetrics;
 
-use Laravel\Nova\Metrics\Trend;
+use Laravel\Nova\Metrics\Value;
 
-class CustomTrend extends Trend
+class CustomValue extends Value
 {
     /**
      * Get the component name for the element.
@@ -13,6 +13,6 @@ class CustomTrend extends Trend
      */
     public function component()
     {
-        return 'CustomTrendMetric';
+        return 'CustomValueMetric';
     }
 }

@@ -1,9 +1,11 @@
 {
-    "name": "Acme/CustomTrend",
-    "description": "A Laravel Nova card.",
+    "name": "square1/nova-metrics",
+    "description": "Add support for resource-filters on your laravel nova metrics",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "metrics",
+        "filters"
     ],
     "license": "MIT",
     "require": {
@@ -11,13 +13,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Acme\\CustomTrend\\": "src/"
+            "Square1\\NovaMetrics\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Acme\\CustomTrend\\CardServiceProvider"
+                "Square1\\NovaMetrics\\CardServiceProvider"
             ]
         }
     },
