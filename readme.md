@@ -4,19 +4,19 @@ This package will allow you to access your resource-filters on any Laravel Nova 
 
 ---
 
-Chars are a great way to display some graphic information on your dashboard, and with Laravel Nova you can create beautiful **Metrics Cards** really fast.
+Charts are a great way to display graphic information on your dashboard, and with Laravel Nova you can create beautiful **Metrics Cards** really fast.
 
-You can use these chars on your resources views as well.
+You can use these charts on your resource views as well.
 
 ![Custom Trend](./img/custom-trend.png "CustomTrend")
 
-Usually when you add those metrics to any resource, you'll expect the graphic to be a representation of the data you are seeing in the list down below, but currently on nova this is not possible, when you change a filter selection, the resources-list is updated, but the graphics are not.
+Usually when you add those metrics to any resource, you'd expect the chart to be a representation of the data you are seeing in the list down below. Currently on Nova this is not possible - when you change a filter selection, the resources-list is updated, but the corresponding charts are not.
 
 ![Custom Trend](./img/metrics-before.gif "Nova Filters")
 
-This happens because the requests to populate the list is independent from the request used to get the metrics-data, so updating the filters breaks the connection with the graphs, leaving them outdated.
+This happens because the requests to populate the list are independent from the request used to get the metrics-data. This means that updating the filters breaks the connection with the charts, leaving them outdated.
 
-This package restores that connection, ensuring that the graphs and data on-screen remain in sync.
+This package restores that connection, ensuring that the charts and data on-screen remain in sync.
 
 ![Custom Trend](./img/after.gif "Nova Filters")
 
@@ -38,7 +38,7 @@ php artisan nova:trend NewTrend
 php artisan nova:value NewValue
 ```
 
-Then you only need to update your recently created metric class, to extend from one of the following classes to have access to your resource filters:
+Then you only need to update your recently created metric class. Extend from one of the following classes to have access to your resource filters:
 
 ```php
 use Square1\NovaMetrics\CustomTrend;
