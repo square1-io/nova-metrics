@@ -1,4 +1,4 @@
-# Custom NovaTrend Component
+# Custom Nova Metrics Components
 
 This package will allow you to access your resource-filters on any Laravel Nova Metric class, and will update these cards dynamically every time you select a new filter on your resources-list.
 
