@@ -105,24 +105,26 @@ This is how you can apply this filter to your `NewTrend::class` :
 class NewTrend extends CustomTrend
 {
     public function calculate(NovaRequest $request)
-    {
-        $model = Post::make();
-
-        if ($request->has('filters')) {
-            // Get the decoded list of filters
-            $filters = json_decode(base64_decode($request->filters));
-
-            foreach ($filters as $filter) {
-                if (empty($filter->value)) {
-                    continue;
+        {
+            $model = Post::make();
+    
+            if (!empty($filters)) {
+                if ($request->has('filters')) {
+                    // Get the decoded list of filters
+                    $filters = json_decode(base64_decode($request->filters));
+        
+                    foreach ($filters as $filter) {
+                        if (empty($filter->value)) {
+                            continue;
+                        }
+                        // Create a new instance of the filter and apply the query to your model
+                        $model = (new $filter->class)->apply($request, $model, $filter->value);
+                    }
                 }
-                // Create a new instance of the filter and apply the query to your model
-                $model = (new $filter->class)->apply($request, $model, $filter->value);
             }
+            
+            return $this->averageByDays($request, $model, 'pageviews');
         }
-
-        return $this->averageByDays($request, $model, 'pageviews');
-    }
 }
 ```
 
