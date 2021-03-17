@@ -108,18 +108,16 @@ class NewTrend extends CustomTrend
         {
             $model = Post::make();
     
-            if (!empty($filters)) {
-                if ($request->has('filters')) {
-                    // Get the decoded list of filters
-                    $filters = json_decode(base64_decode($request->filters));
-        
-                    foreach ($filters as $filter) {
-                        if (empty($filter->value)) {
-                            continue;
-                        }
-                        // Create a new instance of the filter and apply the query to your model
-                        $model = (new $filter->class)->apply($request, $model, $filter->value);
+            if ($request->has('filters')) {
+                // Get the decoded list of filters
+                $filters = json_decode(base64_decode($request->filters));
+    
+                foreach ($filters as $filter) {
+                    if (empty($filter->value)) {
+                        continue;
                     }
+                    // Create a new instance of the filter and apply the query to your model
+                    $model = (new $filter->class)->apply($request, $model, $filter->value);
                 }
             }
             
